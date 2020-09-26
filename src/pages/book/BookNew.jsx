@@ -7,6 +7,7 @@ import { createBook } from '../../service/book/bookAction';
 const BookNew = () => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
+  const [quantity, setQuantity] = useState();
   const dispatch = useDispatch();
   const bookReducer = useSelector((state) => state.bookReducer);
 
@@ -14,7 +15,7 @@ const BookNew = () => {
 
   const onFormSubmit = () => {
     // console.log({ name, description });
-    dispatch(createBook({ name, description }));
+    dispatch(createBook({ name, description, quantity }));
   };
 
   return (
@@ -40,6 +41,14 @@ const BookNew = () => {
                       placeholder="description.. "
                       name="description"
                       onChange={(event) => setDescription(event.target.value)}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Quantity</label>
+                    <input
+                      placeholder="quantity.. "
+                      name="quantity"
+                      onChange={(event) => setQuantity(event.target.value)}
                     />
                   </Form.Field>
                   <Button
