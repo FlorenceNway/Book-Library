@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { CREATE_BOOK } from './bookActionType';
+import { CREATE_BOOK, GET_BOOKS } from './bookActionType';
 
 export const createBook = (data) => async (dispatch) => {
   try {
-    console.log('data', data);
     const url = 'https://book-library-4e468.firebaseio.com/book.json/';
     dispatch({
       type: CREATE_BOOK,
@@ -25,6 +24,37 @@ export const createBook = (data) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: CREATE_BOOK,
+      meta: {
+        isPending: false,
+        error: true,
+      },
+    });
+  }
+};
+
+export const getAllBooks = (data) => async (dispatch) => {
+  try {
+    const url = 'https://book-library-4e468.firebaseio.com/book.json/';
+    dispatch({
+      type: GET_BOOKS,
+      meta: {
+        isPending: true,
+        error: false,
+      },
+    });
+
+    const response = await axios.get(url, data);
+    dispatch({
+      type: GET_BOOKS,
+      meta: {
+        isPending: false,
+        error: false,
+      },
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_BOOKS,
       meta: {
         isPending: false,
         error: true,
