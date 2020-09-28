@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_BOOK, GET_BOOKS } from './bookActionType';
+import { CREATE_BOOK, GET_BOOKS, SELECT_BOOKS } from './bookActionType';
 
 export const createBook = (data) => async (dispatch) => {
   try {
@@ -44,6 +44,7 @@ export const getAllBooks = (data) => async (dispatch) => {
     });
 
     const response = await axios.get(url, data);
+    console.log(response.data);
     dispatch({
       type: GET_BOOKS,
       meta: {
@@ -61,4 +62,12 @@ export const getAllBooks = (data) => async (dispatch) => {
       },
     });
   }
+};
+
+export const selectBook = (data) => (dispatch) => {
+  console.log('selectBook', data);
+  dispatch({
+    type: SELECT_BOOKS,
+    payload: data,
+  });
 };
