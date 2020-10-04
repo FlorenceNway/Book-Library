@@ -7,7 +7,6 @@ import {
   Container,
   Dropdown,
   Segment,
-  Dimmer,
   Loader,
 } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -97,6 +96,7 @@ const BookList = () => {
                               Detail
                             </Button>
                             <Button
+                              disabled={book.quantity <= 0}
                               primary
                               onClick={() => dispatch(addToCart(book.id))}
                             >
