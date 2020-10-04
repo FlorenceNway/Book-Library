@@ -21,12 +21,13 @@ const Layout = ({ children }) => {
           className={styles.menuItem}
           onClick={() => history.push('/books/new')}
         />
+
         <Menu.Item
-          name="New"
-          className={styles.menuItem}
-          onClick={() => history.push('/books/new')}
-        />
-        <Menu.Item name="cart" position="right">
+          name="cart"
+          position="right"
+          disabled={orders.length === 0}
+          onClick={() => history.push('/orders')}
+        >
           <Icon name="cart" color="yellow" />
           <Label color="teal">{orders.length}</Label>
         </Menu.Item>
