@@ -20,7 +20,7 @@ const BookNew = () => {
 
   return (
     <div>
-      <Layout>
+      <Layout goBack title="New Book">
         <Grid centered>
           <Grid.Row>
             <Grid.Column computer={8}>
