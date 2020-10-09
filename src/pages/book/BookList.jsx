@@ -96,7 +96,7 @@ const BookList = () => {
                               Detail
                             </Button>
                             <Button
-                              disabled={book.quantity <= 0}
+                              disabled={!book.quantity || book.quantity <= 0}
                               primary
                               onClick={() => dispatch(addToCart(book.id))}
                             >
