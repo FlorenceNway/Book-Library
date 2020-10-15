@@ -46,6 +46,7 @@ const BookNew = () => {
                   <Form.Field>
                     <label>Quantity</label>
                     <input
+                      type="number"
                       placeholder="quantity.. "
                       name="quantity"
                       onChange={(event) => setQuantity(event.target.value)}
